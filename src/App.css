@@ -1,0 +1,13 @@
+.card{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  background-color: #ffb2f1;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 7px 7px 0px #000000;
+}
+.card button{
+  width: fit-content;
+  align-self: center;
+}
