@@ -1,13 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Londrina+Shadow&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+.page{
+  background-color: #ffca00;
+  width: 100%;
+  height: 100vh;
+  font-family: "Lexend Deca", sans-serif;
+  overflow: hidden;
+
+
+}
+
+header{
+  font-weight: 500;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  font-size: 30px;
+
+
+}
+
 .card{
   display: flex;
   flex-direction: column;
   width: 500px;
-  background-color: #ffb2f1;
-  padding: 10px;
+  background-color: #c8a3fd;
+  padding: 20px;
   border-radius: 15px;
   box-shadow: 7px 7px 0px #000000;
+  border: 2px solid #000000;
+  font-family: inherit;
 }
-.card button{
+
+.input-title{
+  margin-bottom: 10px;
+  padding: 10px;
+  font-family: inherit;
+
+}
+
+.input-snippet{
+  margin-bottom: 10px;
+  padding: 10px;
+  font-family: inherit;
+  resize: none;
+
+
+}
+
+.add-snippet-btn{
   width: fit-content;
   align-self: center;
+  padding: 10px;
+  background-color: #34da34;
+  font-family: inherit;
+
+
+}
+
+.card-border{
+  border: 2px solid #000000;
 }
