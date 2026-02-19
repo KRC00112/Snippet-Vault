@@ -22,22 +22,34 @@ header{
 
 }
 
+.workspace{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.right-section{
+  width: 100vw;
+}
 .card{
   display: flex;
   flex-direction: column;
-  width: 500px;
-  background-color: #c8a3fd;
+  width: 200px;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 7px 7px 0px #000000;
+  box-shadow: 5px 5px 0px #000000;
   border: 2px solid #000000;
   font-family: inherit;
+}
+
+.right-card{
+  width: 100%;
 }
 
 .input-title{
   margin-bottom: 10px;
   padding: 10px;
   font-family: inherit;
+  border-radius: 5px;
 
 }
 
@@ -46,6 +58,7 @@ header{
   padding: 10px;
   font-family: inherit;
   resize: none;
+  border-radius: 5px;
 
 
 }
@@ -55,6 +68,23 @@ header{
   align-self: center;
   padding: 10px;
   background-color: #34da34;
+  font-family: inherit;
+  border-radius: 5px;
+
+
+
+}
+
+.create-snippet-heading{
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.languages-drop-down{
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 2px solid #000000;
+  padding: 10px;
   font-family: inherit;
 
 
