@@ -1,113 +1,205 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Londrina+Shadow&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 .page{
-  background-color: #ffca00;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
-  font-family: "Lexend Deca", sans-serif;
-  overflow: hidden;
-
+  width: 100vw;
+  background-color: #ffca00;
 
 }
-
 header{
-  font-weight: 500;
-  width: 100%;
-  height: 50px;
+  /*background-color: #ffca00;*/
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  justify-content: space-between;
   padding: 10px;
-  font-size: 30px;
-
-
+  align-items: center;
+  border-bottom: 3px solid #000000;
 }
-
 .workspace{
-  display: flex;
-  flex-direction: row;
+  /*background-color: #ffca00;*/
   width: 100%;
+  height: 100%;
+  display: flex;
+}
+.left-section{
+  /*background-color: #e69c47;*/
+  padding: 15px;
+  width:fit-content;
+  border-right: 3px solid #000000;
+
 }
 .right-section{
-  width: 800px;
+  /*background-color: #bcf6f8;*/
+  width: 100%;
+  overflow-y: auto;
 }
+
 .card{
   display: flex;
   flex-direction: column;
-  width: 200px;
-  padding: 20px;
+  padding: 15px;
   border-radius: 15px;
   box-shadow: 5px 5px 0px #000000;
   border: 2px solid #000000;
-  font-family: inherit;
+  margin: 0px;
 }
-
-.right-card{
-  width: 100%;
-}
-
-.input-title{
-  margin-bottom: 10px;
-  padding: 10px;
-  font-family: inherit;
-  border-radius: 5px;
+.add-snippet-card{
+  background-color: #c6a3fd;
+  width:250px;
 
 }
-
-.input-snippet{
-  margin-bottom: 10px;
-  padding: 10px;
-  font-family: inherit;
-  resize: none;
-  border-radius: 5px;
-
-
-}
-
-.add-snippet-btn{
-  width: fit-content;
-  align-self: center;
-  padding: 10px;
-  background-color: #34da34;
-  font-family: inherit;
-  border-radius: 5px;
-
-
-
-}
-
-.create-snippet-heading{
+.add-snippet-heading{
   font-size: 10px;
   margin-bottom: 5px;
 }
 
-.languages-drop-down{
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 2px solid #000000;
+.add-snippet-btn{
+  white-space: nowrap;
+  align-self: center;
   padding: 10px;
-  font-family: inherit;
-
+  background-color: #34da34;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0px #000000;
+  font-size: 12px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 5px;
 
 }
 
+.card-inputs{
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #000000;
+}
+
+.input-snippet{
+  resize: none;
+  margin-bottom: 0px;
+}
+.right-section{
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
 
 
 .all-tags{
   display: flex;
-  align-items: stretch;
+  /*background-color: #ea2929;*/
+  margin-bottom: 10px;
 
 }
 .language-tags{
-  list-style: none;
   display: flex;
+  list-style: none;
+  /*background-color: #2966ea;*/
 }
 .language-tags li{
   display: flex;
-  align-items: stretch;
+}
+
+
+
+.tag-btns{
+  margin-right:5px;
+  border-radius: 5px;
+  padding: 0px;
+  padding-inline: 7px;
+  padding-block: 3px;
+  box-shadow: 2px 2px 0px #000000;
+  background-color: #ffffff;
+
+
+}
+
+
+.snippets-count-label{
+  background-color: black;
+  color: #ffca00;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.right-card{
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  overflow: hidden;
+
+}
+
+.right-card-heading{
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  padding-inline: 15px ;
+  align-items: center;
+  border-bottom: 2px solid #000000;
+
+}
+.right-card-title-and-language{
+  display: flex;
+  align-items: center;
+
+}
+
+.right-card-title-label{
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+.right-card-language-label{
+  padding-inline: 7px;
+  padding-block: 2px;
+  background-color: #ffca00;
+
+  border-radius: 5px;
+  border: 2px solid #000000;
+  font-weight: 400;
+
 }
 
 .right-card-snippet{
-  height: 100px;
+  background-color: #000000;
+  color: #8e8f8f;
+  font-family:Consolas;
+  padding: 10px;
+  padding-inline: 15px ;
+  min-height: 50px;
+  max-height: 100px;
   word-wrap: break-word;
-  overflow-y: auto;
+  overflow: auto;
+  border-bottom: 2px solid #000000;
+
+}
+
+.snippet-operations{
+  display: flex;
+
+}
+.snippet-operations button{
+  padding: 10px;
+  border: none;
+}
+
+.snippet-operations .copy-btn{
+  flex-grow: 1;
+  background-color: #c7a3fd;
+  border-right: 2px solid #000000;
+
+
+}
+.delete-btn{
+  flex-grow: 1;
+  background-color: #ff6b6b;
+}
+
+.selected-snippet{
+  background-color: #000000;
+  color: #ffca00;
+  box-shadow: none;
+
 }
