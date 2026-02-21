@@ -41,7 +41,10 @@ function SnippetCardList({list,removeCard}){
 
 function AllSnippets({snippets,languageList,removeCard,query,onChangeQuery}) {
     const [selectedLanguageTag, setSelectedLanguageTag] = useState('all');
-    const taggedSnippets=snippets.filter(obj=>obj.language===selectedLanguageTag)
+
+    const filteredList=query?snippets.filter(snippet=>snippet.title.toLowerCase().includes(query.toLowerCase())):snippets;
+    const displayList=selectedLanguageTag==='all'?filteredList:filteredList.filter(snippet=>snippet.language===selectedLanguageTag)
+
     return (
         <>
             <input type='text' className='card-inputs' placeholder='Search snippets...' value={query} onChange={(e)=>{onChangeQuery(e)}}></input>
@@ -54,14 +57,15 @@ function AllSnippets({snippets,languageList,removeCard,query,onChangeQuery}) {
                 </ul>
             </div>
             <div>
-                {selectedLanguageTag!=='all' && <SnippetCardList list={taggedSnippets} removeCard={removeCard}/>}
-                {selectedLanguageTag==='all' && <SnippetCardList list={snippets} removeCard={removeCard}/>}
-                {/*<div className='card placeholder'>*/}
-                {/*        <div className='placeholder-logo'>{`\{ \}`}</div>*/}
-                {/*        <div className='placeholder-message'>*/}
-                {/*            <span>NO SNIPPETS HERE!</span>*/}
-                {/*        </div>*/}
-                {/*</div>*/}
+
+                {displayList.length<=0?<div className='card placeholder'>
+                        <div className='placeholder-logo'>{`\{  \}`}</div>
+                        <div className='placeholder-message'>
+                            <span>NO SNIPPETS HERE!</span>
+                        </div>
+                </div>:<>
+                    <SnippetCardList list={displayList} removeCard={removeCard}/>
+                </>}
 
             </div>
         </>
@@ -96,7 +100,6 @@ function App() {
     const onChangeQuery=(e)=>{
         setQuery(e.target.value)
     }
-    const filteredList=query?snippets.filter(snippet=>snippet.title.toLowerCase().includes(query.toLowerCase())):snippets;
     const removeCard=(id)=>{
         setSnippets(prev=>prev.filter(item=>item.id!==id))
     }
@@ -119,7 +122,7 @@ function App() {
                 <AddSnippet addSnippetOnClick={addSnippetOnClick} languageList={languageList}/>
             </section>
             <section className='right-section'>
-                <AllSnippets snippets={filteredList} languageList={languageList} removeCard={removeCard} query={query} onChangeQuery={onChangeQuery}/>
+                <AllSnippets snippets={snippets} languageList={languageList} removeCard={removeCard} query={query} onChangeQuery={onChangeQuery}/>
             </section>
         </section>
     </div>
