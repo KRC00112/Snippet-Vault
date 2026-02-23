@@ -31,3 +31,40 @@ A code snippet manager app deployed on AWS EC2, served over HTTPS at a custom do
 | ⚛️ Frontend | React (Vite build) |
 
 ---
+
+## 📋 Deployment Overview
+
+The server setup is broken into four parts:
+
+### A. 🖥️ EC2 Instance: Provisioning & SSH Access
+
+A `t3.micro` instance (free tier eligible) was provisioned with the **Amazon Linux 2023** AMI. A security group was configured to allow inbound **SSH (22)**, **HTTP (80)**, and **HTTPS (443)** traffic.
+
+The instance is accessed via SSH using a `.pem` key pair:
+
+```bash
+# Fix overly open key permissions
+chmod 400 "[private-key].pem"
+
+# Connect to instance
+ssh -i "[private-key].pem" [username]@[remote-hostname]
+```
+
+> ⚠️ Without `chmod 400`, SSH will refuse the key with a `Permissions too open` error.
+
+---
+
+### B. ⚡ Nginx: Install, Start, and Enable
+
+Nginx was installed via the `dnf` package manager, started immediately, and enabled to run automatically on every boot:
+
+```bash
+sudo dnf update -y && sudo dnf install nginx
+sudo nginx -v                   # Verify install
+sudo systemctl start nginx      # Start the server
+sudo systemctl enable nginx     # Auto-start on reboot
+```
+
+At this point, visiting `http://[public-ip]` will show the default **"Welcome to nginx!"** page. Confirming the server is live.
+
+---
