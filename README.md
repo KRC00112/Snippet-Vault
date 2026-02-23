@@ -68,3 +68,61 @@ sudo systemctl enable nginx     # Auto-start on reboot
 At this point, visiting `http://[public-ip]` will show the default **"Welcome to nginx!"** page. Confirming the server is live.
 
 ---
+
+### C. 🦆🔒 Duck DNS + Let's Encrypt: Custom Domain & HTTPS
+
+At this stage the site is reachable only via a raw IP over plain HTTP. Two things are needed to fix that: a **domain name** and an **SSL/TLS certificate**.
+
+#### 🦆 Duck DNS
+
+SSL/TLS certificates cannot be issued for raw IP addresses — a domain is required first. Duck DNS provides free subdomains.
+
+1. Create an account on duckdns.org
+2. Register a unique subdomain (e.g. `snippetvault2138.duckdns.org`)
+3. Set the IP field to your EC2 instance's **public IPv4 address**
+
+Now `http://snippetvault2138.duckdns.org` resolves to the same Nginx page.
+
+#### 🔒 Let's Encrypt via Certbot
+
+Certbot was installed into a Python virtual environment and run with the Nginx plugin to automatically obtain and configure a certificate:
+
+```bash
+# Install dependencies
+sudo dnf install python3 python-devel augeas-devel gcc
+
+# Remove any system-level Certbot to avoid conflicts
+sudo dnf remove certbot
+
+# Create a virtual environment and install Certbot
+sudo python3 -m venv /opt/certbot/
+sudo /opt/certbot/bin/pip install --upgrade pip
+sudo /opt/certbot/bin/pip install certbot certbot-nginx
+
+# Make Certbot accessible system-wide
+sudo ln -s /opt/certbot/bin/certbot /usr/local/bin/certbot
+```
+
+Before running Certbot, ensure Nginx is configured with the domain name:
+
+```bash
+sudo nano /etc/nginx/nginx.conf
+```
+
+Inside the `server` block, add:
+
+```nginx
+server_name snippetvault2138.duckdns.org;
+```
+
+Test and reload Nginx, then run Certbot:
+
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+sudo certbot --nginx
+```
+
+Certbot will prompt for an email address, Terms of Service agreement, and domain name — then handle the rest automatically, including updating the Nginx config to serve HTTPS.
+
+---
