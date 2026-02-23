@@ -75,7 +75,7 @@ At this stage the site is reachable only via a raw IP over plain HTTP. Two thing
 
 #### 🦆 Duck DNS
 
-SSL/TLS certificates cannot be issued for raw IP addresses — a domain is required first. Duck DNS provides free subdomains.
+SSL/TLS certificates cannot be issued for raw IP addresses. A domain is required first. Duck DNS provides free subdomains.
 
 1. Create an account on duckdns.org
 2. Register a unique subdomain (e.g. `snippetvault2138.duckdns.org`)
@@ -123,6 +123,36 @@ sudo systemctl reload nginx
 sudo certbot --nginx
 ```
 
-Certbot will prompt for an email address, Terms of Service agreement, and domain name — then handle the rest automatically, including updating the Nginx config to serve HTTPS.
+Certbot will prompt for an email address, Terms of Service agreement, and domain name. After that, it'll handle the rest automatically, including updating the Nginx config to serve HTTPS.
+
+---
+
+### D. 📄 Deploying the React App
+
+With Nginx running and HTTPS configured, the final step is placing the built app files on the server.
+
+By default, Nginx on Amazon Linux 2023 serves content from `/usr/share/nginx/html/`. The default placeholder files look like:
+
+```
+404.html  50x.html  icons  index.html  nginx-logo.png  poweredby.png
+```
+
+The built React app (output of `npm run build`) was transferred into this directory, replacing the defaults:
+
+```
+index.html    assets/
+```
+
+Where `assets/` contains the compiled output:
+
+```
+assets/index.css    assets/index.js
+```
+
+`index.html` is the entry point — the browser automatically loads the CSS and JS bundle from there.
+
+> 🔐 Files in `/usr/share/nginx/html/` are owned by root. Always use `sudo` when writing here, otherwise changes will fail silently or end up in the wrong location.
+
+No Nginx restart is required after deploying files. **Changes are served immediately.**
 
 ---
