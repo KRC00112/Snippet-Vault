@@ -159,5 +159,14 @@ No Nginx restart is required after deploying files. **Changes are served immedia
 
 ## 📸 Screenshots
 
+<table>
+  <tr>
+    <td colspan="2" align="center"><img src="screenshots/Capture2.PNG"/></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/Capture1.PNG"/></td>
+    <td><img src="screenshots/Capture3.PNG"/></td>
+  </tr>
+</table>
 
 ---
