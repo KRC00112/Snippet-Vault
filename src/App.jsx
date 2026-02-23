@@ -93,7 +93,7 @@ function AddSnippet({handleSetTitle, handleSetLanguage , handleSetCode, title, l
                     <option key={index} >{item}</option>
                 ))}
             </select>
-            <textarea className={`input-snippet card-inputs ${focused==='snippet'?'clicked':''}`} onFocus={()=>{handleFocus('snippet')}} onBlur={()=>{handleFocus('')}} placeholder='Paste your snippet here...' rows={20} value={code} onChange={(e)=>{handleSetCode(e)}}></textarea>
+            <textarea className={`input-snippet card-inputs ${focused==='snippet'?'clicked':''}`} onFocus={()=>{handleFocus('snippet')}} onBlur={()=>{handleFocus('')}} placeholder='Paste your snippet here...' rows={22} value={code} onChange={(e)=>{handleSetCode(e)}}></textarea>
             <button className='add-snippet-btn card' onClick={()=>handleAddSnippetBtnClick()}>+ ADD SNIPPET</button>
         </div>
     );

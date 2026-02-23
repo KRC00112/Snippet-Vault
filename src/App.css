@@ -49,9 +49,7 @@ header {
 }
 
 .left-section {
-  width: 28%;
-  min-width: 200px;
-  max-width: 360px;
+  width: 330px;
   flex-shrink: 0;
   border-right: 3px solid #000000;
   padding: 15px;
@@ -63,7 +61,6 @@ header {
 .add-snippet-card {
   background-color: #c6a3fd;
   width: 100%;
-  flex: 1;
   min-height: 0;
   display: flex;
   flex-direction: column;
@@ -89,18 +86,16 @@ header {
   box-sizing: border-box;
 }
 
-@media (max-width: 600px) {
+@media (orientation: portrait) {
   .workspace {
     flex-direction: column;
     overflow-y: auto;
   }
   .left-section {
     width: 100%;
-    max-width: 100%;
-    min-width: unset;
+    flex-shrink: 0;
     border-right: none;
     border-bottom: 3px solid #000000;
-    flex-shrink: 0;
   }
   .add-snippet-card {
     flex: unset;
@@ -111,7 +106,7 @@ header {
   }
   .right-section {
     overflow-y: unset;
-    padding-bottom: 40px;
+    padding-bottom: 60px;
   }
 }
 
