@@ -109,6 +109,7 @@ function App() {
     const [title, setTitle] = useState('')
     const [language, setLanguage] = useState(languageList[0]);
     const [code, setCode] = useState('');
+    const [loggedIn, setLoggedIn] = useState(true);
 
     const handleFocus=(comp)=>{
         setFocused(comp)
@@ -146,7 +147,15 @@ function App() {
                 <span className='header-icon'>{'</>'}</span>
                 <span className='header-name'>Snippet Vault</span>
             </div>
-            <label className='snippets-count-label'>{snippets.length} SNIPPET{snippets.length===1?'':'S'}</label>
+            <div className='header-right'>
+                <label className='snippets-count-label'>{snippets.length} SNIPPET{snippets.length===1?'':'S'}</label>
+                {loggedIn===false?
+                    <>
+                        <div className='header-button'>Login</div>
+                        <div className='header-button'>Sign up</div>
+                    </>:<img src='/user_profile.svg' alt='user_profile' width='40px' className='header-user-profile'/>}
+
+            </div>
         </header>
         <section className='workspace'>
             <section className='left-section'>

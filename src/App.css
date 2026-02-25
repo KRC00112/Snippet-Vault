@@ -24,6 +24,11 @@ header {
   display: flex;
   align-items: center;
 }
+.header-right{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
 .header-icon {
   background-color: #000000;
@@ -217,11 +222,14 @@ header {
   box-shadow: 3px 3px 0px #000000;
 }
 
-.snippets-count-label {
+.snippets-count-label,.header-button {
   background-color: black;
   color: #ffca00;
   padding: 10px;
   font-weight: bold;
+}
+.header-button,.header-user-profile {
+  margin-left:5px;
 }
 
 .right-card {
